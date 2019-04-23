@@ -71,7 +71,6 @@ export default {
 .dgtl {
   font-family: "DSEG14-Classic";
   font-weight: bold;
-  font-style: italic;
   color: #f2f804;
   text-shadow: 0px 0px 0.2em #f2f804;
 }
