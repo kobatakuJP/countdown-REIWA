@@ -1,11 +1,13 @@
 <template>
   <div id="wrap">
+    <div>
     <div id="head">令和まで</div>
     <div id="strong-area">
       <span class="dgtl strong">{{strong}}</span>
       <span class="dgtl unit">{{unit}}</span>
     </div>
     <div id="detail-area" class="dgtl">{{detail}}</div>
+    </div>
   </div>
 </template>
 
@@ -23,7 +25,7 @@ export default {
   methods: {
     updateReal: function () {
       setInterval(() => {
-        this.diff = new Date([2019, 5, 1]) - Date.now();
+        this.diff = new Date(2019, 4, 1) - Date.now();
       }, 500)
     }
   },
@@ -74,9 +76,16 @@ export default {
   background-color: black;
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #head {
   color: white;
+  font-size: 1.5em;
+}
+#strong-area {
+  margin: 3em;
 }
 .strong {
   font-size: 10em;
