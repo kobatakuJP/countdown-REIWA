@@ -11,6 +11,7 @@
 <script>
 import 'dseg/css/dseg.css'
 import moment from 'moment'
+import mdf from 'moment-duration-format'
 export default {
   name: 'HelloWorld',
   data() {
@@ -21,30 +22,31 @@ export default {
   methods: {
     updateReal: function () {
       setInterval(() => {
-        this.diff = moment([2019, 5, 1]).diff(moment());
+        this.diff = new Date([2019, 5, 1]) - Date.now();
       }, 500)
     }
   },
   mounted: function () {
+    mdf(moment)
     this.updateReal()
   },
   computed: {
     detail: function () {
-      return moment(this.diff).format("D  HH : mm : ss")
+      return moment.duration(this.diff).format("D  HH : mm : ss")
     },
     strong: function () {
       if (this.diff > 1000 * 60 * 60 * 24) {
         // 1日以上なら日付を強調
-        return `${moment(this.diff).format("D")} 日`
+        return `${moment.duration(this.diff).format("D")} 日`
       } else if (this.diff > 1000 * 60 * 60) {
         // 1時間以上なら時間を強調
-        return `${moment(this.diff).format("h")} 時間`
+        return `${moment.duration(this.diff).format("h")} 時間`
       } else if (this.diff > 1000 * 60) {
         // 1分以上なら分を強調
-        return `${moment(this.diff).format("m")} 分`
+        return `${moment.duration(this.diff).format("m")} 分`
       } else if (this.diff > 1000) {
         // 1秒以上なら秒を強調
-        return `${moment(this.diff).format("s")}`
+        return `${moment.duration(this.diff).format("s")}`
       }
     }
   }
