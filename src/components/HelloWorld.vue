@@ -2,7 +2,8 @@
   <div id="wrap">
     <div id="head">令和まで</div>
     <div id="strong-area">
-      <span class="dgtl">{{strong}}</span>
+      <span class="dgtl strong">{{strong}}</span>
+      <span class="dgtl unit">{{unit}}</span>
     </div>
     <div id="detail-area" class="dgtl">{{detail}}</div>
   </div>
@@ -37,16 +38,31 @@ export default {
     strong: function () {
       if (this.diff > 1000 * 60 * 60 * 24) {
         // 1日以上なら日付を強調
-        return `${moment.duration(this.diff).format("D")} 日`
+        return `${moment.duration(this.diff).format("D")}`
       } else if (this.diff > 1000 * 60 * 60) {
         // 1時間以上なら時間を強調
-        return `${moment.duration(this.diff).format("h")} 時間`
+        return `${moment.duration(this.diff).format("h")}`
       } else if (this.diff > 1000 * 60) {
         // 1分以上なら分を強調
-        return `${moment.duration(this.diff).format("m")} 分`
+        return `${moment.duration(this.diff).format("m")}`
       } else if (this.diff > 1000) {
         // 1秒以上なら秒を強調
         return `${moment.duration(this.diff).format("s")}`
+      }
+    },
+    unit: function () {
+      if (this.diff > 1000 * 60 * 60 * 24) {
+        // 1日以上なら日付を強調
+        return ` 日`
+      } else if (this.diff > 1000 * 60 * 60) {
+        // 1時間以上なら時間を強調
+        return ` 時間`
+      } else if (this.diff > 1000 * 60) {
+        // 1分以上なら分を強調
+        return ` 分`
+      } else if (this.diff > 1000) {
+        // 1秒以上なら秒を強調
+        return ``
       }
     }
   }
@@ -62,8 +78,12 @@ export default {
 #head {
   color: white;
 }
-#strong-area {
+.strong {
   font-size: 10em;
+  font-style: italic;
+}
+.unit {
+  font-size: 3em;
 }
 #detail-area {
   font-size: 2em;
