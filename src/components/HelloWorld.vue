@@ -32,7 +32,7 @@ export default {
   },
   computed: {
     detail: function () {
-      return moment.duration(this.diff).format("D  HH : mm : ss")
+      return moment.duration(this.diff).format("D[日] HH : mm : ss")
     },
     strong: function () {
       if (this.diff > 1000 * 60 * 60 * 24) {
