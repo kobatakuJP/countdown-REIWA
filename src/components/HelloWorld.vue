@@ -1,14 +1,17 @@
 <template>
-  <div id="wrap">
-    <div>
-      <div id="head">令和まで</div>
-      <div id="strong-area">
-        <span class="dgtl strong">{{strong}}</span>
-        <span class="dgtl unit">{{unit}}</span>
+  <transition>
+    <div id="wrap" v-show="isCount">
+      <!-- <button @click="last10sec">?</button> -->
+      <div>
+        <div id="head">令和まで</div>
+        <div id="strong-area">
+          <span class="dgtl strong">{{strong}}</span>
+          <span class="dgtl unit">{{unit}}</span>
+        </div>
+        <div id="detail-area" class="dgtl">{{detail}}</div>
       </div>
-      <div id="detail-area" class="dgtl">{{detail}}</div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -17,21 +20,25 @@ import moment from 'moment'
 import mdf from 'moment-duration-format'
 export default {
   name: 'HelloWorld',
+  reiwaTime: [2019, 4, 1],
   data() {
     return {
-      diff: 0,
+      now: moment(),
       goal: moment([2019, 4, 1])
     }
   },
   methods: {
     updateReal: function () {
       setInterval(() => {
-        this.diff = this.goal - moment()
+        this.now = moment()
       }, 500)
     },
     /** 引数はmomentの引数になるもの。[2019,4,1]とか。 */
     setGoal: function (v) {
       this.goal = moment(v)
+    },
+    last10sec: function () {
+      this.goal = moment().add(10, 's')
     }
   },
   mounted: function () {
@@ -39,35 +46,41 @@ export default {
     this.updateReal()
   },
   computed: {
+    diff: function () {
+      return Math.max(this.goal.diff(this.now), 0);
+    },
+    isCount: function () {
+      return this.goal > this.now
+    },
     detail: function () {
       return moment.duration(this.diff).format('D[日] HH : mm : ss', { trim: false, trunc: true })
     },
     strong: function () {
-      if (this.diff > 1000 * 60 * 60 * 24) {
+      if (this.diff >= 1000 * 60 * 60 * 24) {
         // 1日以上なら日付を強調
         return `${moment.duration(this.diff).format('D', { trim: false, trunc: true })}`
-      } else if (this.diff > 1000 * 60 * 60) {
+      } else if (this.diff >= 1000 * 60 * 60) {
         // 1時間以上なら時間を強調
         return `${moment.duration(this.diff).format('h', { trim: false, trunc: true })}`
-      } else if (this.diff > 1000 * 60) {
+      } else if (this.diff >= 1000 * 60) {
         // 1分以上なら分を強調
         return `${moment.duration(this.diff).format('m', { trim: false, trunc: true })}`
-      } else if (this.diff > 1000) {
-        // 1秒以上なら秒を強調
+      } else if (this.diff >= 0) {
+        // 0秒以上なら秒を強調
         return `${moment.duration(this.diff).format('s', { trim: false, trunc: true })}`
       }
     },
     unit: function () {
-      if (this.diff > 1000 * 60 * 60 * 24) {
+      if (this.diff >= 1000 * 60 * 60 * 24) {
         // 1日以上なら日付を強調
         return ` 日`
-      } else if (this.diff > 1000 * 60 * 60) {
+      } else if (this.diff >= 1000 * 60 * 60) {
         // 1時間以上なら時間を強調
         return ` 時間`
-      } else if (this.diff > 1000 * 60) {
+      } else if (this.diff >= 1000 * 60) {
         // 1分以上なら分を強調
         return ` 分`
-      } else if (this.diff > 1000) {
+      } else if (this.diff >= 0) {
         // 1秒以上なら秒を強調
         return ``
       }
@@ -107,5 +120,15 @@ export default {
   font-weight: bold;
   color: #f2f804;
   text-shadow: 0px 0px 0.2em #f2f804;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s;
+}
+
+.v-enter,
+.v-leave-to {
+  opacity: 0;
 }
 </style>
