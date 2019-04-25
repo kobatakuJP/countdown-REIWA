@@ -1,17 +1,15 @@
 <template>
-  <transition>
-    <div id="wrap" v-show="isCount">
-      <!-- <button @click="last10sec">?</button> -->
-      <div>
-        <div id="head">令和まで</div>
-        <div id="strong-area">
-          <span class="dgtl strong">{{strong}}</span>
-          <span class="dgtl unit">{{unit}}</span>
-        </div>
-        <div id="detail-area" class="dgtl">{{detail}}</div>
+  <div id="wrap">
+    <button @click="last10sec">?</button>
+    <div>
+      <div id="head">令和まで</div>
+      <div id="strong-area">
+        <span class="dgtl strong">{{strong}}</span>
+        <span class="dgtl unit">{{unit}}</span>
       </div>
+      <div id="detail-area" class="dgtl">{{detail}}</div>
     </div>
-  </transition>
+  </div>
 </template>
 
 <script>
@@ -19,18 +17,23 @@ import 'dseg/css/dseg.css'
 import moment from 'moment'
 import mdf from 'moment-duration-format'
 export default {
-  name: 'HelloWorld',
+  name: 'Counter',
   reiwaTime: [2019, 4, 1],
   data() {
     return {
       now: moment(),
-      goal: moment([2019, 4, 1])
+      goal: moment([2019, 4, 1]),
+      iKey: -1
     }
   },
   methods: {
     updateReal: function () {
-      setInterval(() => {
+      this.iKey = setInterval(() => {
         this.now = moment()
+        if (!this.isCount) {
+          clearInterval(this.iKey)
+          this.iKey = -1
+        }
       }, 500)
     },
     /** 引数はmomentの引数になるもの。[2019,4,1]とか。 */
@@ -39,6 +42,9 @@ export default {
     },
     last10sec: function () {
       this.goal = moment().add(10, 's')
+      if (this.iKey !== -1) {
+        this.updateReal()
+      }
     }
   },
   mounted: function () {
@@ -47,7 +53,7 @@ export default {
   },
   computed: {
     diff: function () {
-      return Math.max(this.goal.diff(this.now), 0);
+      return Math.max(this.goal.diff(this.now), 0)
     },
     isCount: function () {
       return this.goal > this.now
@@ -85,6 +91,13 @@ export default {
         return ``
       }
     }
+  },
+  watch: {
+    diff: function (v) {
+      if (v === 0) {
+        this.$router.push('/a')
+      }
+    }
   }
 }
 </script>
@@ -120,15 +133,5 @@ export default {
   font-weight: bold;
   color: #f2f804;
   text-shadow: 0px 0px 0.2em #f2f804;
-}
-
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.5s;
-}
-
-.v-enter,
-.v-leave-to {
-  opacity: 0;
 }
 </style>

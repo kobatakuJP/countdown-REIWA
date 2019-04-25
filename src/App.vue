@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view/>
+    <transition>
+      <router-view/>
+    </transition>
   </div>
 </template>
 
@@ -24,5 +26,14 @@ body {
   margin: 0;
   top: 0;
   left: 0;
+}
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s;
+}
+
+.v-enter,
+.v-leave-to {
+  opacity: 0;
 }
 </style>
