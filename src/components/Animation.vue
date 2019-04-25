@@ -1,5 +1,8 @@
 <template>
   <div id="wrap">
+    <div class="timeleep" v-show="leepable">
+      <button @click="leep">10秒前へ</button>
+    </div>
     <div id="gengo">令和</div>
   </div>
 </template>
@@ -10,16 +13,16 @@ export default {
   reiwaTime: [2019, 4, 1],
   data() {
     return {
-      now: 0
+      leepable: false
     }
   },
   methods: {
-    setGoal: function (v) {
-      this.now = v
+    leep: function () {
+      this.$router.push({ path: '/', query: { leep: 10 } })
     }
   },
   mounted: function () {
-    // this.updateReal()
+    setTimeout(() => { this.leepable = true }, 5000)
   },
   computed: {
   }
@@ -39,6 +42,13 @@ export default {
   color: black;
   font-size: 1.5em;
 }
+
+.timeleep {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+}
+
 .v-enter-active,
 .v-leave-active {
   transition: opacity 0.5s;

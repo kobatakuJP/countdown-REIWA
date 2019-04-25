@@ -1,6 +1,6 @@
 <template>
   <div id="wrap">
-    <button @click="last10sec">?</button>
+    <!-- <button @click="last10sec">?</button> debug用 -->
     <div>
       <div id="head">令和まで</div>
       <div id="strong-area">
@@ -30,15 +30,7 @@ export default {
     updateReal: function () {
       this.iKey = setInterval(() => {
         this.now = moment()
-        if (!this.isCount) {
-          clearInterval(this.iKey)
-          this.iKey = -1
-        }
       }, 500)
-    },
-    /** 引数はmomentの引数になるもの。[2019,4,1]とか。 */
-    setGoal: function (v) {
-      this.goal = moment(v)
     },
     last10sec: function () {
       this.goal = moment().add(10, 's')
@@ -50,13 +42,13 @@ export default {
   mounted: function () {
     mdf(moment)
     this.updateReal()
+    if (this.$route.query.leep) {
+      this.goal = moment().add(this.$route.query.leep, 's')
+    }
   },
   computed: {
     diff: function () {
       return Math.max(this.goal.diff(this.now), 0)
-    },
-    isCount: function () {
-      return this.goal > this.now
     },
     detail: function () {
       return moment.duration(this.diff).format('D[日] HH : mm : ss', { trim: false, trunc: true })
@@ -95,6 +87,7 @@ export default {
   watch: {
     diff: function (v) {
       if (v === 0) {
+        clearInterval(this.iKey)
         this.$router.push('/a')
       }
     }
@@ -133,5 +126,24 @@ export default {
   font-weight: bold;
   color: #f2f804;
   text-shadow: 0px 0px 0.2em #f2f804;
+}
+
+@keyframes flash {
+    0% {
+        text-shadow: 0px 0px 0.2em #f2f804;
+    }
+    50% {
+        text-shadow: 0px 0px 3em #f2f804;
+    }
+    100% {
+      text-shadow: 0px 0px 0.2em #f2f804;
+    }
+}
+
+.flashing {
+    animation-name: flash;
+    animation-timing-function: linear;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
 }
 </style>
