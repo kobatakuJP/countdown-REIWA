@@ -19,14 +19,19 @@ export default {
   name: 'HelloWorld',
   data() {
     return {
-      diff: 0
+      diff: 0,
+      goal: moment([2019, 4, 1])
     }
   },
   methods: {
     updateReal: function () {
       setInterval(() => {
-        this.diff = moment([2019, 4, 1]) - moment()
+        this.diff = this.goal - moment()
       }, 500)
+    },
+    /** 引数はmomentの引数になるもの。[2019,4,1]とか。 */
+    setGoal: function (v) {
+      this.goal = moment(v)
     }
   },
   mounted: function () {
