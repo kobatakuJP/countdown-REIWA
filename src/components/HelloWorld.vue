@@ -1,12 +1,12 @@
 <template>
   <div id="wrap">
     <div>
-    <div id="head">令和まで</div>
-    <div id="strong-area">
-      <span class="dgtl strong">{{strong}}</span>
-      <span class="dgtl unit">{{unit}}</span>
-    </div>
-    <div id="detail-area" class="dgtl">{{detail}}</div>
+      <div id="head">令和まで</div>
+      <div id="strong-area">
+        <span class="dgtl strong">{{strong}}</span>
+        <span class="dgtl unit">{{unit}}</span>
+      </div>
+      <div id="detail-area" class="dgtl">{{detail}}</div>
     </div>
   </div>
 </template>
@@ -35,21 +35,21 @@ export default {
   },
   computed: {
     detail: function () {
-      return moment.duration(this.diff).format("D[日] HH : mm : ss", { trim: false,trunc:true })
+      return moment.duration(this.diff).format("D[日] HH : mm : ss", { trim: false, trunc: true })
     },
     strong: function () {
       if (this.diff > 1000 * 60 * 60 * 24) {
         // 1日以上なら日付を強調
-        return `${moment.duration(this.diff).format("D", { trim: false,trunc:true })}`
+        return `${moment.duration(this.diff).format("D", { trim: false, trunc: true })}`
       } else if (this.diff > 1000 * 60 * 60) {
         // 1時間以上なら時間を強調
-        return `${moment.duration(this.diff).format("h", { trim: false,trunc:true })}`
+        return `${moment.duration(this.diff).format("h", { trim: false, trunc: true })}`
       } else if (this.diff > 1000 * 60) {
         // 1分以上なら分を強調
-        return `${moment.duration(this.diff).format("m", { trim: false,trunc:true })}`
+        return `${moment.duration(this.diff).format("m", { trim: false, trunc: true })}`
       } else if (this.diff > 1000) {
         // 1秒以上なら秒を強調
-        return `${moment.duration(this.diff).format("s", { trim: false,trunc:true })}`
+        return `${moment.duration(this.diff).format("s", { trim: false, trunc: true })}`
       }
     },
     unit: function () {
