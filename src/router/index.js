@@ -19,7 +19,7 @@ export default new Router({
       component: Animation
     },
     {
-      path: '/b',
+      path: '/reiwagame',
       name: 'ReiwaGame',
       component: ReiwaGame
     }
