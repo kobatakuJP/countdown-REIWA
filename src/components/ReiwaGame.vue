@@ -184,8 +184,41 @@ export default {
     },
     dead: function() {
       this.isDead = true;
-      alert(`you dead
-PT: ${this.snake.length}`);
+      const pt = this.snake.length;
+      let com = "ほう";
+      if (pt === 256) {
+        com = "You are Perfect 令和。令和はあなたにあげます。自慢していいです。あなたはすごいやつです。愛しています。";
+      } else if (pt > 240) {
+        com = "ここまで到達する者を見るのは令和では久しぶりだ。到達するのか、その先へ。";
+      } else if (pt > 220) {
+        com = "もはや何も言うまでもない令和ぶり。君はすでに人を越えた。";
+      } else if (pt > 200) {
+        com = "令和な大台を突破。修羅の道を進む君にエールを送る。";
+      } else if (pt > 180) {
+        com = "令和に愛され始めている。ほかの元号が嫉妬するレベルになってきている。";
+      } else if (pt > 160) {
+        com = "令和に生きる人間としては最高峰のひとり。今ならワンフェイクで沢北をかわせます。";
+      } else if (pt > 140) {
+        com = "相当な手練れの令和ぶり。相手がヤムチャならワンパン余裕です。";
+      } else if (pt > 120) {
+        com = "かなり令和に近づいている。令和とともにあらんことを。";
+      } else if (pt > 100) {
+        com = "意地でも令和をつなげたい気持ちが盛り上がる。ここを乗り越えると強くなれる。";
+      } else if (pt > 80) {
+        com = "令和の心が少しづつ分かってくるころ。万葉集と古今和歌集の区別がつき始める。";
+      } else if (pt > 60) {
+        com = "中の下の令和。心無いコメントをされると折れるレベル。";
+      } else if (pt > 40) {
+        com = "脱・令和初心者。もう平成とは言わせない。";
+      } else if (pt > 20) {
+        com = "令和がゲシュタルト崩壊してくるころ。しかしまだまだ先は長い。";
+      } else if (pt > 10) {
+        com = "令和初心者。俺たちの戦いは始まったばかり。";
+      } else {
+        com = "令和に満たない。でも僕は好き。";
+      }
+      alert(`あなたの令和ポイント：${pt}
+コメント：${com}`);
     }
   },
   mounted: function() {
@@ -205,6 +238,7 @@ PT: ${this.snake.length}`);
   padding: 0;
   grid-template-columns: repeat(3, 64px);
   grid-template-rows: repeat(3, 64px);
+  opacity: 0.3;
 }
 
 .contbtn {
