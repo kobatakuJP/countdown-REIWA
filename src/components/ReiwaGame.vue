@@ -63,6 +63,7 @@ export default {
       ];
       this.agent = { x: 7, y: 0, div: document.createElement("div") };
       this.agent.div.className = "agent";
+      this.movecount = 30;
       this.nowdir = this.dircode.l;
       this.nextdir = this.dircode.l;
       this.addKeyAction();
@@ -167,6 +168,7 @@ export default {
       const nextAgent = blank[Math.floor(Math.random() * blank.length)];
       this.agent.x = nextAgent.x;
       this.agent.y = nextAgent.y;
+      this.movecount = Math.ceil(30 - 0.1 * this.snake.length);
     },
     checkDead: function() {
       const head = this.snake[0];
@@ -187,25 +189,31 @@ export default {
       const pt = this.snake.length;
       let com = "ほう";
       if (pt === 256) {
-        com = "You are Perfect 令和。令和はあなたにあげます。自慢していいです。あなたはすごいやつです。愛しています。";
+        com =
+          "You are Perfect 令和。令和はあなたにあげます。自慢していいです。あなたはすごいやつです。愛しています。";
       } else if (pt > 240) {
-        com = "ここまで到達する者を見るのは令和では久しぶりだ。到達するのか、その先へ。";
+        com =
+          "ここまで到達する者を見るのは令和では久しぶりだ。到達するのか、その先へ。";
       } else if (pt > 220) {
         com = "もはや何も言うまでもない令和ぶり。君はすでに人を越えた。";
       } else if (pt > 200) {
         com = "令和な大台を突破。修羅の道を進む君にエールを送る。";
       } else if (pt > 180) {
-        com = "令和に愛され始めている。ほかの元号が嫉妬するレベルになってきている。";
+        com =
+          "令和に愛され始めている。ほかの元号が嫉妬するレベルになってきている。";
       } else if (pt > 160) {
-        com = "令和に生きる人間としては最高峰のひとり。今ならワンフェイクで沢北をかわせます。";
+        com =
+          "令和に生きる人間としては最高峰のひとり。今ならワンフェイクで沢北をかわせます。";
       } else if (pt > 140) {
         com = "相当な手練れの令和ぶり。相手がヤムチャならワンパン余裕です。";
       } else if (pt > 120) {
         com = "かなり令和に近づいている。令和とともにあらんことを。";
       } else if (pt > 100) {
-        com = "意地でも令和をつなげたい気持ちが盛り上がる。ここを乗り越えると強くなれる。";
+        com =
+          "意地でも令和をつなげたい気持ちが盛り上がる。ここを乗り越えると強くなれる。";
       } else if (pt > 80) {
-        com = "令和の心が少しづつ分かってくるころ。万葉集と古今和歌集の区別がつき始める。";
+        com =
+          "令和の心が少しづつ分かってくるころ。万葉集と古今和歌集の区別がつき始める。";
       } else if (pt > 60) {
         com = "中の下の令和。心無いコメントをされると折れるレベル。";
       } else if (pt > 40) {
