@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import swal from "sweetalert2";
 export default {
   name: "ReiwaGame",
   data() {
@@ -225,8 +226,12 @@ export default {
       } else {
         com = "令和に満たない。でも僕は好き。";
       }
-      alert(`あなたの令和ポイント：${pt}
-コメント：${com}`);
+      swal.fire({
+        type: pt > 200 ? "success" : "error",
+        title: `あなたの令和ポイント：${pt}`,
+        text: `${com}`,
+        footer: `<a href="https://mixi.jp/simplepost/voice?status=${com}(令和PT:${pt})【CountDown令和：<https://kobatakujp.github.io/countdown-REIWA/dist/>】">結果をmixiでつぶやく</a>`
+      });
     }
   },
   mounted: function() {

@@ -14,6 +14,7 @@
     "dseg": "^0.45.1",
     "moment": "^2.24.0",
     "moment-duration-format": "^2.2.2",
+    "sweetalert2": "^8.9.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
