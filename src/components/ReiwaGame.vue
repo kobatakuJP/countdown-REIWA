@@ -65,8 +65,27 @@ export default {
       this.agent.div.className = "agent";
       this.nowdir = this.dircode.l;
       this.nextdir = this.dircode.l;
+      this.addKeyAction();
       this.draw();
       this.mainloop();
+    },
+    addKeyAction() {
+      document.addEventListener("keydown", e => {
+        switch (e.key) {
+          case "ArrowUp":
+            this.move(this.dircode.u);
+            break;
+          case "ArrowRight":
+            this.move(this.dircode.r);
+            break;
+          case "ArrowLeft":
+            this.move(this.dircode.l);
+            break;
+          case "ArrowDown":
+            this.move(this.dircode.d);
+            break;
+        }
+      });
     },
     draw: function() {
       this.agent.div.style.gridArea = `g${this.agent.y}-${this.agent.x}`;
