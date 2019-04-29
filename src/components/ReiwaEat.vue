@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'Animation',
+  name: 'ReiwaEat',
   data() {
     return {
       leepable: false
@@ -29,22 +29,4 @@ export default {
 </script>
 
 <style scoped>
-#wrap {
-  background-color: white;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-#gengo {
-  color: black;
-  font-size: 1.5em;
-}
-
-.timeleep {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-}
 </style>
