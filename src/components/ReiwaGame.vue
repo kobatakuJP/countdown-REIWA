@@ -17,6 +17,10 @@
         <img src="../../img/arrow_up.svg">
       </div>
     </div>
+    <div v-show="isDead" class="buttonarea">
+      <button @click="leep">10秒カウントダウン</button>
+      <button @click="reset">リセット</button>
+    </div>
   </div>
 </template>
 
@@ -51,6 +55,12 @@ export default {
     };
   },
   methods: {
+    leep: function() {
+      this.$router.push({ path: "/", query: { leep: 10 } });
+    },
+    reset: function() {
+      location.reload();
+    },
     mainloop: function() {
       if (!this.isDead) {
         this.countup();
