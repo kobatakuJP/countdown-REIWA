@@ -1,5 +1,6 @@
 <template>
   <div id="wrap">
+    <h3>令和ゲーム</h3>
     <div id="game-main">
       <div class="snakegame-main-box" ref="snakebox"></div>
     </div>
@@ -244,7 +245,7 @@ export default {
         type: pt > 200 ? "success" : "error",
         title: `令和ポイント：${pt}`,
         text: `${com}`,
-        footer: `<a href="https://mixi.jp/simplepost/voice?status=${shareStr}">mixi</a>／<a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=${shareStr}" data-size="large">Tweet</a>／<a href="http://line.me/R/msg/text/?${shareStr}">LINE</a>`
+        footer: `<a href="https://mixi.jp/simplepost/voice?status=${shareStr}">mixi</a>／<a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=${shareStr}" data-size="large">Tweet</a>／<a href="http://line.me/R/msg/text/?${shareStr}">LINE</a>／<a href="https://www.facebook.com/sharer/sharer.php?u=http://bit.ly/2vvAOaK">Facebook</a>`
       });
     }
   },
