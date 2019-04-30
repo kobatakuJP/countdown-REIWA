@@ -154,7 +154,7 @@ export default {
       // エンカウント確認
       if (this.agent.x === newplace.x && this.agent.y === newplace.y) {
         // エンカウントしてたら蛇を長くする
-        this.snake.push({ x: 0, y: 0, div: document.createElement("div") });
+        this.snake.push({ x: newplace.x, y: newplace.y, div: document.createElement("div") });
         this.updateAgent();
       }
       const topdiv = this.snake[this.snake.length - 1].div;
