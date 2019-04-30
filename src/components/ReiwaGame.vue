@@ -233,8 +233,10 @@ export default {
         com = "令和がゲシュタルト崩壊してくるころ。しかしまだまだ先は長い。";
       } else if (pt > 10) {
         com = "令和初心者。俺たちの戦いは始まったばかり。";
-      } else {
+      } else if (pt > 2) {
         com = "令和に満たない。でも僕は好きです。";
+      } else {
+        com = "え？";
       }
       const shareStr = `【令和PT】${pt}PT【評価】${com}【令和Game：<http://bit.ly/2vvAOaK>】`
       swal.fire({
