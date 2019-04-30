@@ -25,7 +25,7 @@ export default {
     }
   },
   mounted: function () {
-    setTimeout(() => { this.leepable = true }, 5000)
+    setTimeout(() => { this.leepable = true }, 3000)
   },
   computed: {
   }
