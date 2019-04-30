@@ -179,7 +179,7 @@ export default {
       const nextAgent = blank[Math.floor(Math.random() * blank.length)];
       this.agent.x = nextAgent.x;
       this.agent.y = nextAgent.y;
-      this.movecount = Math.ceil(30 - 0.1 * this.snake.length);
+      this.movecount = Math.ceil(25 - 0.08 * this.snake.length);
     },
     checkDead: function() {
       const head = this.snake[0];
@@ -234,7 +234,7 @@ export default {
       } else if (pt > 10) {
         com = "令和初心者。俺たちの戦いは始まったばかり。";
       } else {
-        com = "令和に満たないです。でも僕は好きです。";
+        com = "令和に満たない。でも僕は好きです。";
       }
       swal.fire({
         allowOutsideClick: false,
