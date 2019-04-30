@@ -242,7 +242,7 @@ export default {
         type: pt > 200 ? "success" : "error",
         title: `令和ポイント：${pt}`,
         text: `${com}`,
-        footer: `<a href="https://mixi.jp/simplepost/voice?status=${shareStr}【令和Game：<https://kobatakujp.github.io/countdown-REIWA/dist/#/reiwagame>】">mixi</a>／<a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=${shareStr}" data-size="large">Tweet</a>／<a class="twitter-share-button" href="https://social-plugins.line.me/lineit/share?text=${shareStr}">LINE</a>`
+        footer: `<a href="https://mixi.jp/simplepost/voice?status=${shareStr}">mixi</a>／<a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=${shareStr}" data-size="large">Tweet</a>／<a href="https://social-plugins.line.me/lineit/share?text=${shareStr}">LINE</a>`
       });
     }
   },
