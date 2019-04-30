@@ -236,12 +236,13 @@ export default {
       } else {
         com = "令和に満たない。でも僕は好きです。";
       }
+      const shareStr = `【令和PT】${pt}PT【評価】${com}【令和Game：<http://bit.ly/2vvAOaK>】`
       swal.fire({
         allowOutsideClick: false,
         type: pt > 200 ? "success" : "error",
-        title: `あなたの令和ポイント：${pt}`,
+        title: `令和ポイント：${pt}`,
         text: `${com}`,
-        footer: `<a href="https://mixi.jp/simplepost/voice?status=${com}(令和PT:${pt})【CountDown令和：<https://kobatakujp.github.io/countdown-REIWA/dist/>】">結果をmixiでつぶやく</a>`
+        footer: `<a href="https://mixi.jp/simplepost/voice?status=${shareStr}【令和Game：<https://kobatakujp.github.io/countdown-REIWA/dist/#/reiwagame>】">mixi</a>／<a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=${shareStr}" data-size="large">Tweet</a>`
       });
     }
   },
