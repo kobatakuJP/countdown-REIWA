@@ -234,9 +234,10 @@ export default {
       } else if (pt > 10) {
         com = "令和初心者。俺たちの戦いは始まったばかり。";
       } else {
-        com = "令和に満たない。でも僕は好き。";
+        com = "令和に満たないです。でも僕は好きです。";
       }
       swal.fire({
+        allowOutsideClick: false,
         type: pt > 200 ? "success" : "error",
         title: `あなたの令和ポイント：${pt}`,
         text: `${com}`,
