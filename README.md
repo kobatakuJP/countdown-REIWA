@@ -1,6 +1,6 @@
 # contdownreiwa
 
-> count down for REIWA
+https://kobatakujp.github.io/countdown-REIWA/
 
 ## Build Setup
 
