@@ -1,6 +1,6 @@
 # contdownreiwa
 
-https://kobatakujp.github.io/countdown-REIWA/
+https://kobatakujp.github.io/countdown-REIWA/dist/
 
 ## Build Setup
 
