@@ -29,6 +29,17 @@
 import swal from "sweetalert2";
 export default {
   name: "ReiwaGame",
+  head: {
+    meta: [
+      { name: 'description', content: '令和をつなげるゲームです。得点(令和PT)に応じて評価が入ります。' },
+      { property: 'og:title', content: '令和ゲーム' },
+      { property: 'og:description', content: '令和をつなげるゲームです。得点(令和PT)に応じて評価が入ります。' },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:url', content: 'https://kobatakujp.github.io/countdown-REIWA/dist/#/reiwagame' },
+      { property: 'og:image', content: 'https://kobatakujp.github.io/countdown-REIWA/img/og_raiwagame.png' },
+      { name: 'twitter:card', content: '令和をつなげるゲーム' }
+    ]
+  },
   data() {
     return {
       leepable: false,
