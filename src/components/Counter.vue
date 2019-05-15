@@ -86,7 +86,7 @@ export default {
   },
   watch: {
     diff: function (v) {
-      if (v === 0) {
+      if (v <= 0) {
         clearInterval(this.iKey)
         this.$router.push('/a')
       }
